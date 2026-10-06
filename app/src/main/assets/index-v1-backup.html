@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="hi"><head><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><title>Ravi Mock Test</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f6f7fb;color:#111827}
+header{background:#2563eb;color:white;padding:22px 18px;border-radius:0 0 22px 22px}
+main{padding:16px;max-width:700px;margin:auto}.card{background:white;border:1px solid #e5e7eb;border-radius:18px;padding:16px;margin:12px 0;box-shadow:0 2px 8px #0000000a}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.exam{padding:18px;border:1px solid #e5e7eb;background:white;border-radius:16px;text-align:left;font-size:16px}
+button{min-height:46px;border-radius:12px;border:1px solid #d1d5db;background:white;padding:10px 14px;font-weight:600}
+.primary{background:#2563eb;color:white;border-color:#2563eb}.hidden{display:none}.option{display:block;width:100%;text-align:left;margin:9px 0}.selected{border-color:#2563eb;background:#eff6ff}
+</style></head>
+<body><header><div>📚 आपका Study Partner</div><h1>Ravi Mock Test</h1><div>UPSI • PET • Lekhpal • Home Guard</div></header>
+<main>
+<section id="home"><div class="card"><b>🎯 Today's Practice</b><h2>10 Questions Challenge</h2><button class="primary" onclick="start('General Studies')">Start Test →</button></div>
+<h2>Select Exam</h2><div class="grid" id="exams"></div></section>
+<section id="test" class="hidden"><button onclick="goHome()">← Home</button><div class="card"><div id="meta"></div><h2 id="q"></h2><div id="opts"></div><button id="next" class="primary" onclick="next()">Next →</button></div></section>
+<section id="result" class="hidden card" style="text-align:center"><h2>🎉 Test Completed</h2><div id="score" style="font-size:48px;font-weight:bold"></div><p id="detail"></p><button class="primary" onclick="start('General Studies')">Try Again</button></section>
+</main>
+<script>
+const exams=[['👮','UPSI'],['📖','UPSSSC PET'],['📋','Lekhpal'],['🛡️','Home Guard'],['🏛️','UPPCS'],['🎯','General GK']];
+document.getElementById('exams').innerHTML=exams.map(e=>`<button class="exam" onclick="start('${e[1]}')"><div style="font-size:28px">${e[0]}</div><b>${e[1]}</b><br><small>Mock Tests • PYQ</small></button>`).join('');
+const qs=[
+['Polity','भारतीय संविधान का संरक्षक किसे माना जाता है?',['संसद','सर्वोच्च न्यायालय','राष्ट्रपति','प्रधानमंत्री'],1],
+['History','भारतीय राष्ट्रीय कांग्रेस की स्थापना किस वर्ष हुई?',['1885','1905','1919','1947'],0],
+['Geography','क्षेत्रफल की दृष्टि से भारत का सबसे बड़ा राज्य कौन-सा है?',['उत्तर प्रदेश','राजस्थान','मध्य प्रदेश','महाराष्ट्र'],1],
+['Science','रक्त को पंप करने वाला अंग कौन-सा है?',['फेफड़ा','हृदय','यकृत','गुर्दा'],1],
+['GK','भारत का राष्ट्रीय पशु कौन है?',['सिंह','हाथी','बाघ','मोर'],2]
+];
+let i=0,score=0,chosen=-1,exam='';
+function start(e){exam=e;i=0;score=0;chosen=-1;home.classList.add('hidden');result.classList.add('hidden');test.classList.remove('hidden');render()}
+function render(){let d=qs[i%qs.length];document.getElementById('meta').textContent=exam+' • Question '+(i+1)+' / 10';document.getElementById('q').textContent=d[1];let box=document.getElementById('opts');box.innerHTML='';d[2].forEach((x,n)=>{let b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+n)+'. '+x;b.onclick=()=>{if(chosen!=-1)return;chosen=n;b.classList.add('selected');if(n===d[3])score++;box.querySelectorAll('button').forEach(z=>z.disabled=true)};box.appendChild(b)});document.getElementById('next').textContent=i===9?'Submit Test ✓':'Next →'}
+function next(){if(i<9){i++;chosen=-1;render()}else{test.classList.add('hidden');result.classList.remove('hidden');document.getElementById('score').textContent=score+' / 10';document.getElementById('detail').textContent='Accuracy: '+score*10+'%'}}
+function goHome(){test.classList.add('hidden');home.classList.remove('hidden')}
+</script></body></html>

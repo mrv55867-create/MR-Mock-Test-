@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "531023717593",
+    "project_id": "ravi-mock-test",
+    "storage_bucket": "ravi-mock-test.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531023717593:android:9b5a4a1b424070a5df0ac8",
+        "android_client_info": {
+          "package_name": "com.ravi.mocktest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAN6jqiL1azxB9HOZ1XfJL1NMmK-lKYyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
