@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-
+import com.google.firebase.firestore.FirebaseFirestore;
 public class MainActivity extends Activity {
 
     FirebaseAuth auth;
@@ -117,6 +117,8 @@ public class MainActivity extends Activity {
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
         w.loadUrl("file:///android_asset/index.html");
-        setContentView(w);
+       setContentView(w);
     }
-}
+ }
+
+
