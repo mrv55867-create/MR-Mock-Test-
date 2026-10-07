@@ -3,6 +3,7 @@ package com.ravi.mocktest;
 import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebSettings;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -101,7 +102,8 @@ public class MainActivity extends Activity {
     void openHome() {
 
         WebView w = new WebView(this);
-
+w.setWebChromeClient(new WebChromeClient());git add .
+git
         WebSettings s = w.getSettings();
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
