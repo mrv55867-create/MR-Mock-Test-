@@ -102,8 +102,8 @@ public class MainActivity extends Activity {
     void openHome() {
 
         WebView w = new WebView(this);
-w.setWebChromeClient(new WebChromeClient());git add .
-git
+w.setWebChromeClient(new WebChromeClient());
+
         WebSettings s = w.getSettings();
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
