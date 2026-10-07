@@ -10,8 +10,7 @@ button{min-height:46px;border-radius:12px;border:1px solid #d1d5db;background:wh
 .primary{background:#2563eb;color:white;border-color:#2563eb}.hidden{display:none}.option{display:block;width:100%;text-align:left;margin:9px 0}.selected{border-color:#2563eb;background:#eff6ff}
 </style></head>
 <body><header><div>📚 आपका Study Partner</div><h1>Ravi Mock Test</h1><div>UPSI • PET • Lekhpal • Home Guard</div></header>
-<main>
- <button onclick="openAdmin()">🔐 Admin Panel</button>   
+<button onclick="alert('Admin Panel जल्द उपलब्ध होगा')">🔐 Admin Panel</button>
 <section id="home"><div class="card"><b>🎯 Today's Practice</b><h2>10 Questions Challenge</h2><button class="primary" onclick="start('General Studies')">Start Test →</button></div>
 <h2>Select Exam</h2><div class="grid" id="exams"></div></section>
 <section id="test" class="hidden"><button onclick="goHome()">← Home</button><div class="card"><div id="meta"></div><h2 id="q"></h2><div id="opts"></div><button id="next" class="primary" onclick="next()">Next →</button></div></section>
@@ -32,7 +31,4 @@ function start(e){exam=e;i=0;score=0;chosen=-1;home.classList.add('hidden');resu
 function render(){let d=qs[i%qs.length];document.getElementById('meta').textContent=exam+' • Question '+(i+1)+' / 10';document.getElementById('q').textContent=d[1];let box=document.getElementById('opts');box.innerHTML='';d[2].forEach((x,n)=>{let b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+n)+'. '+x;b.onclick=()=>{if(chosen!=-1)return;chosen=n;b.classList.add('selected');if(n===d[3])score++;box.querySelectorAll('button').forEach(z=>z.disabled=true)};box.appendChild(b)});document.getElementById('next').textContent=i===9?'Submit Test ✓':'Next →'}
 function next(){if(i<9){i++;chosen=-1;render()}else{test.classList.add('hidden');result.classList.remove('hidden');document.getElementById('score').textContent=score+' / 10';document.getElementById('detail').textContent='Accuracy: '+score*10+'%'}}
 function goHome(){test.classList.add('hidden');home.classList.remove('hidden')}
-function openAdmin(){
-        alert("Admin Panel जल्द उपलब्ध होगा");
-        }
 </script></body></html>
