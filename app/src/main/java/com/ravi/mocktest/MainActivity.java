@@ -17,20 +17,34 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class MainActivity extends Activity {
 
     FirebaseAuth auth;
-
+FirebaseFirestore db;
     @Override
     public void onCreate(Bundle b) {
         super.onCreate(b);
 
         auth = FirebaseAuth.getInstance();
-
+db = FirebaseFirestore.getInstance();
         if (auth.getCurrentUser() != null) {
             openHome();
         } else {
             showLogin();
         }
     }
+void checkAdmin() {
+        if (auth.getCurrentUser() == null) {
+                return;
+                    }
 
+                        String uid = auth.getCurrentUser().getUid();
+
+                            db.collection("admins").document(uid).get()
+                                    .addOnSuccessListener(document -> {
+                                                if (document.exists()) {
+                                                                Toast.makeText(this, "Admin verified", Toast.LENGTH_SHORT).show();
+                                                                            }
+                                                                                    });
+                                                                                    }void
+}
     void showLogin() {
         LinearLayout box = new LinearLayout(this);
         box.setOrientation(LinearLayout.VERTICAL);
